@@ -3,6 +3,8 @@ import prisma from "@/lib/dbInstance";
 import crypto from "crypto";
 import { sendMail } from "@/lib/mailer";
 
+export const runtime = "nodejs";
+
 function generateTrackingId(type: string): string {
   const randomChars = crypto.randomBytes(3).toString("hex").toUpperCase();
   const prefix = type === "grievance" ? "GRV-" : "FB-";
@@ -10,6 +12,8 @@ function generateTrackingId(type: string): string {
 }
 
 export async function POST(request: Request) {
+  console.log("DATABASE_URL:", process.env.DATABASE_URL ? "SET" : "NOT SET");
+  try {
   try {
     const body = await request.json();
     const { type, content } = body;

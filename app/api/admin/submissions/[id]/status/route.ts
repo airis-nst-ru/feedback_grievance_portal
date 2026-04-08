@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import dbInstance from '@/lib/dbInstance';
 import { withAuth } from '@/lib/adminMiddleware';
 
+export const runtime = "nodejs";
+
 async function updateStatus(req: NextRequest, context?: { params: Promise<{ id: string }> }) {
   try {
     const { id } = await context!.params;
