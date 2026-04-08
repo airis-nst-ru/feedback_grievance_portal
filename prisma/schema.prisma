@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+
+model Submission {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  type       String
+  status     String   @default("pending")
+  content    String
+  trackingId String   @unique
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Reply {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  content      String
+  createdAt    DateTime @default(now())
+  submissionId String   @db.ObjectId
+}
+
+model AdminNotification {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
