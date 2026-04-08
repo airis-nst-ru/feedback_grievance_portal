@@ -1,6 +1,8 @@
 
 const appName = process.env.APP_NAME
 
+export const runtime = "nodejs";
+
 export async function GET(request: Request) {
     return Response.json({ 
         status: 200,
