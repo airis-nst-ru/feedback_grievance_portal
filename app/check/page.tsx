@@ -63,11 +63,11 @@ function CheckStatusContent() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "resolved":
-        return "bg-green-50 text-[var(--success)] border border-green-200";
+        return "bg-green-500/10 text-[var(--success)] border border-green-500/20";
       case "in_progress":
-        return "bg-blue-50 text-[#1E40AF] border border-blue-200";
+        return "bg-blue-500/10 text-blue-400 border border-blue-500/20";
       default:
-        return "bg-yellow-50 text-[#92400E] border border-yellow-200";
+        return "bg-yellow-500/10 text-yellow-500 border border-yellow-500/20";
     }
   };
 
@@ -105,12 +105,12 @@ function CheckStatusContent() {
               value={trackingId}
               onChange={(e) => setTrackingId(e.target.value)}
               placeholder="Enter tracking ID"
-              className="flex-1 px-4 py-2.5 rounded-lg border border-[var(--border)] bg-white text-[var(--text)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)]"
+              className="flex-1 px-4 py-2.5 rounded-lg border border-[var(--border)] bg-black/40 text-[var(--text)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)] transition-all"
             />
             <button
               type="submit"
               disabled={loading}
-              className="px-5 py-2.5 bg-[var(--primary)] text-white rounded-lg font-medium hover:bg-[var(--primary-hover)] transition-colors disabled:opacity-50"
+              className="px-5 py-2.5 bg-[var(--primary)] text-white rounded-lg font-bold hover:bg-[var(--primary-hover)] transition-all disabled:opacity-50 neon-glow uppercase text-xs tracking-widest"
             >
               {loading ? "..." : "Check"}
             </button>
@@ -124,13 +124,13 @@ function CheckStatusContent() {
         )}
 
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-xl p-6 text-center">
-            <svg className="w-10 h-10 text-[var(--error)] mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-8 text-center">
+            <svg className="w-12 h-12 text-red-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
             </svg>
-            <p className="text-[var(--error)]">{error}</p>
-            <p className="text-[var(--text-muted)] text-sm mt-1">
-              Please check the tracking ID and try again.
+            <p className="text-red-500 font-bold mb-1">ID Not Found</p>
+            <p className="text-[var(--text-muted)] text-sm">
+              We couldn&apos;t find any submission matching this ID. Please check and try again.
             </p>
           </div>
         )}
