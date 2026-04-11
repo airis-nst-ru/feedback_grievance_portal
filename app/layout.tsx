@@ -27,13 +27,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="py-12 px-16 absolute top-0 left-0 z-50">
-          <div className="flex items-center">
-            <div className="h-16 w-auto">
-              <img src="/logo.png" alt="AIRIS Logo" className="h-full w-auto object-contain" />
-            </div>
-          </div>
-        </header>
         {children}
       </body>
     </html>

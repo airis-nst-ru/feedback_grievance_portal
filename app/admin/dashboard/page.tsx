@@ -219,47 +219,55 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-[var(--background)]">
-      <header className="bg-[var(--surface)] border-b border-[var(--border)] sticky top-0 z-10 backdrop-blur-md bg-opacity-90">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-8">
-              <h1 className="text-xl font-black text-[var(--text)] tracking-tighter uppercase">
-                Admin <span className="text-[var(--primary)]">Dash</span>
-              </h1>
-              <nav className="hidden md:flex items-center gap-2">
-                <button
-                  onClick={() => setActiveSection('submissions')}
-                  className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
-                    activeSection === 'submissions'
-                      ? 'bg-[var(--primary)] text-white neon-glow'
-                      : 'text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--secondary)]'
-                  }`}
-                >
-                  Submissions
-                </button>
-                <button
-                  onClick={() => setActiveSection('notifications')}
-                  className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${
-                    activeSection === 'notifications'
-                      ? 'bg-[var(--primary)] text-white neon-glow'
-                      : 'text-[var(--text-muted)] hover:text-[var(--text)] hover:bg-[var(--secondary)]'
-                  }`}
-                >
-                  Notifications
-                </button>
-              </nav>
+      <header className="sticky top-0 z-50 py-8 px-6 lg:px-12 pointer-events-none">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <a href="/" className="pointer-events-auto transition-transform hover:scale-105">
+            <div className="h-16 w-auto">
+              <img src="/logo.png" alt="AIRIS Logo" className="h-full w-auto object-contain" />
             </div>
-            <button
-              onClick={handleLogout}
-              className="px-4 py-2 text-xs font-black uppercase tracking-widest text-red-500 hover:bg-red-500/10 rounded-xl transition-all border border-transparent hover:border-red-500/20"
-            >
-              Logout
-            </button>
-          </div>
+          </a>
+          <button
+            onClick={handleLogout}
+            className="pointer-events-auto text-[10px] font-black uppercase tracking-[0.4em] text-[var(--text-muted)] hover:text-red-500 transition-colors"
+          >
+            Logout
+          </button>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <main className="max-w-7xl mx-auto px-6 lg:px-12 pb-12">
+        <div className="flex flex-col gap-8">
+          <div className="flex items-center gap-6 border-b border-[var(--border)] pb-4">
+            <button
+              onClick={() => setActiveSection('submissions')}
+              className={`text-xs font-black uppercase tracking-[0.3em] transition-all relative py-2 ${
+                activeSection === 'submissions'
+                  ? 'text-[var(--primary)]'
+                  : 'text-[var(--text-muted)] hover:text-[var(--text)]'
+              }`}
+            >
+              / Submissions
+              {activeSection === 'submissions' && (
+                <span className="absolute bottom-[-1px] left-0 w-full h-[2px] bg-[var(--primary)]"></span>
+              )}
+            </button>
+            <button
+              onClick={() => setActiveSection('notifications')}
+              className={`text-xs font-black uppercase tracking-[0.3em] transition-all relative py-2 ${
+                activeSection === 'notifications'
+                  ? 'text-[var(--primary)]'
+                  : 'text-[var(--text-muted)] hover:text-[var(--text)]'
+              }`}
+            >
+              / Notifications
+              {activeSection === 'notifications' && (
+                <span className="absolute bottom-[-1px] left-0 w-full h-[2px] bg-[var(--primary)]"></span>
+              )}
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-8">
         {error && (
           <div className="mb-6 p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-500 text-sm font-medium flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -429,6 +437,7 @@ export default function AdminDashboard() {
             </div>
           </div>
         )}
+        </div>
       </main>
 
       {selectedSubmission && (

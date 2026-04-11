@@ -82,7 +82,12 @@ function CheckStatusContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--background)] px-4 py-8">
+    <div className="min-h-screen bg-[var(--background)] px-4 py-8 relative">
+      <header className="fixed top-0 left-0 p-8 z-40 hidden md:block">
+        <div className="h-12 w-auto">
+          <img src="/logo.png" alt="AIRIS Logo" className="h-full w-auto object-contain" />
+        </div>
+      </header>
       <main className="max-w-2xl mx-auto">
         <button
           onClick={() => router.push("/")}
