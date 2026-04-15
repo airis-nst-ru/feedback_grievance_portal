@@ -63,6 +63,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[var(--background)] px-4 flex flex-col items-center justify-center relative overflow-hidden">
+      <header className="fixed top-0 left-0 p-8 md:p-12 z-40">
+        <div className="h-12 md:h-16 w-auto">
+          <img src="/logo.png" alt="AIRIS Logo" className="h-full w-auto object-contain" />
+        </div>
+      </header>
       <main className="w-full max-w-4xl">
         {success ? (
           <div className="max-w-xl mx-auto bg-[var(--surface)] rounded-xl p-10 shadow-2xl border border-[var(--border)] relative overflow-hidden text-center">
