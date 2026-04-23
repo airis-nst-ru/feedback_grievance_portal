@@ -1,0 +1,48 @@
+
+> microservice_template@0.1.0 lint
+> eslint
+
+
+/Users/garvit/feedback_grievance_portal/app/admin/dashboard/page.tsx
+  227:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/garvit/feedback_grievance_portal/app/api/admin/auth/route.ts
+  23:14  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/garvit/feedback_grievance_portal/app/api/admin/notifications/route.ts
+   7:33  warning  'req' is defined but never used           @typescript-eslint/no-unused-vars
+  17:12  warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+  45:19  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  79:19  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  93:49  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  94:49  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  95:54  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/garvit/feedback_grievance_portal/app/api/admin/submissions/[id]/reply/route.ts
+  42:12  warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+  50:45  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/garvit/feedback_grievance_portal/app/api/admin/submissions/[id]/route.ts
+  30:12  warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+  38:46  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/garvit/feedback_grievance_portal/app/api/admin/submissions/[id]/status/route.ts
+  29:12  warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+  37:47  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/garvit/feedback_grievance_portal/app/api/admin/submissions/route.ts
+  42:12  warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+  50:47  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/garvit/feedback_grievance_portal/app/api/healthcheck/route.ts
+  6:27  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/garvit/feedback_grievance_portal/app/check/page.tsx
+  88:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+/Users/garvit/feedback_grievance_portal/app/page.tsx
+  48:9   warning  'handleCheckStatus' is assigned a value but never used                                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
+  68:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+✖ 21 problems (9 errors, 12 warnings)
+

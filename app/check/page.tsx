@@ -83,8 +83,8 @@ function CheckStatusContent() {
 
   return (
     <div className="min-h-screen bg-[var(--background)] px-4 py-8 relative">
-      <header className="fixed top-0 left-0 p-8 z-40 hidden md:block">
-        <div className="h-12 w-auto">
+      <header className="fixed top-0 left-0 p-6 md:p-8 z-40">
+        <div className="h-8 md:h-12 w-auto">
           <img src="/logo.png" alt="AIRIS Logo" className="h-full w-auto object-contain" />
         </div>
       </header>
@@ -99,23 +99,23 @@ function CheckStatusContent() {
           Back to Home
         </button>
 
-        <div className="bg-[var(--surface)] rounded-xl p-6 shadow-sm border border-[var(--border)] mb-6">
-          <h1 className="text-xl font-semibold text-[var(--text)] mb-5">
+        <div className="bg-[var(--surface)] rounded-xl p-5 md:p-6 shadow-sm border border-[var(--border)] mb-6 mt-12 md:mt-0">
+          <h1 className="text-lg md:text-xl font-semibold text-[var(--text)] mb-4 md:mb-5">
             Check Status
           </h1>
-
-          <form onSubmit={handleSubmit} className="flex gap-3">
+ 
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
             <input
               type="text"
               value={trackingId}
               onChange={(e) => setTrackingId(e.target.value)}
               placeholder="Enter tracking ID"
-              className="flex-1 px-4 py-2.5 rounded-lg border border-[var(--border)] bg-black/40 text-[var(--text)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)] transition-all"
+              className="flex-1 px-4 py-2.5 rounded-lg border border-[var(--border)] bg-black/40 text-[var(--text)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)] transition-all text-sm"
             />
             <button
               type="submit"
               disabled={loading}
-              className="px-5 py-2.5 bg-[var(--primary)] text-white rounded-lg font-bold hover:bg-[var(--primary-hover)] transition-all disabled:opacity-50 neon-glow uppercase text-xs tracking-widest"
+              className="px-5 py-2.5 bg-[var(--primary)] text-white rounded-lg font-bold hover:bg-[var(--primary-hover)] transition-all disabled:opacity-50 neon-glow uppercase text-[10px] md:text-xs tracking-widest h-11 md:h-auto"
             >
               {loading ? "..." : "Check"}
             </button>
@@ -142,13 +142,13 @@ function CheckStatusContent() {
 
         {data && (
           <div className="space-y-4">
-            <div className="bg-[var(--surface)] rounded-xl p-5 shadow-sm border border-[var(--border)]">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-sm text-[var(--text-muted)]">
+            <div className="bg-[var(--surface)] rounded-xl p-4 md:p-5 shadow-sm border border-[var(--border)]">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                <span className="text-xs md:text-sm text-[var(--text-muted)] font-bold uppercase tracking-widest">
                   {data.type === "grievance" ? "Grievance" : "Feedback"}
                 </span>
                 <span
-                  className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(
+                  className={`px-3 py-1 rounded-full text-[10px] md:text-sm font-black uppercase tracking-widest text-center ${getStatusColor(
                     data.status
                   )}`}
                 >
@@ -158,33 +158,35 @@ function CheckStatusContent() {
                 </span>
               </div>
 
-              <h2 className="text-base font-medium text-[var(--text)] mb-2">
+              <h2 className="text-sm md:text-base font-bold text-[var(--text)] mb-2 uppercase tracking-tight">
                 {data.type === "grievance" ? "Grievance Details" : "Feedback"}
               </h2>
-              <p className="text-[var(--text-muted)] whitespace-pre-wrap">
-                {data.content}
-              </p>
+              <div className="p-4 bg-black/20 rounded-lg border border-[var(--border)]">
+                <p className="text-sm md:text-base text-[var(--text-muted)] whitespace-pre-wrap leading-relaxed">
+                  {data.content}
+                </p>
+              </div>
 
-              <p className="text-sm text-[var(--text-muted)] mt-4">
+              <p className="text-[10px] md:text-sm text-[var(--text-muted)] mt-4 font-mono uppercase tracking-widest">
                 Submitted: {formatDate(data.createdAt)}
               </p>
             </div>
 
             {data.replies && data.replies.length > 0 && (
-              <div className="bg-[var(--surface)] rounded-xl p-5 shadow-sm border border-[var(--border)]">
-                <h3 className="text-base font-medium text-[var(--text)] mb-4">
+              <div className="bg-[var(--surface)] rounded-xl p-4 md:p-5 shadow-sm border border-[var(--border)]">
+                <h3 className="text-sm md:text-base font-bold text-[var(--text)] mb-4 uppercase tracking-tight">
                   Replies ({data.replies.length})
                 </h3>
                 <div className="space-y-3">
                   {data.replies.map((reply, index) => (
                     <div
                       key={index}
-                      className="bg-[var(--secondary)] rounded-lg p-4"
+                      className="bg-[var(--secondary)] rounded-lg p-3 md:p-4 border border-[var(--border)]/50"
                     >
-                      <p className="text-[var(--text)] whitespace-pre-wrap">
+                      <p className="text-sm md:text-base text-[var(--text)] whitespace-pre-wrap leading-relaxed">
                         {reply.content}
                       </p>
-                      <p className="text-sm text-[var(--text-muted)] mt-2">
+                      <p className="text-[10px] md:text-xs text-[var(--text-muted)] mt-2 font-mono uppercase tracking-widest">
                         {formatDate(reply.createdAt)}
                       </p>
                     </div>

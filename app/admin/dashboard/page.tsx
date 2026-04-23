@@ -219,23 +219,23 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-[var(--background)]">
-      <header className="sticky top-0 z-50 py-8 px-6 lg:px-12 pointer-events-none">
+      <header className="sticky top-0 z-50 py-4 md:py-8 px-6 lg:px-12 pointer-events-none bg-[var(--background)]/80 backdrop-blur-sm border-b border-[var(--border)] md:border-none">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <a href="/" className="pointer-events-auto transition-transform hover:scale-105">
-            <div className="h-16 w-auto">
+            <div className="h-8 md:h-16 w-auto">
               <img src="/logo.png" alt="AIRIS Logo" className="h-full w-auto object-contain" />
             </div>
           </a>
           <button
             onClick={handleLogout}
-            className="pointer-events-auto text-[10px] font-black uppercase tracking-[0.4em] text-[var(--text-muted)] hover:text-red-500 transition-colors"
+            className="pointer-events-auto text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] md:tracking-[0.4em] text-[var(--text-muted)] hover:text-red-500 transition-colors"
           >
             Logout
           </button>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 lg:px-12 pb-12">
+      <main className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12 pb-12 mt-6 md:mt-0">
         <div className="flex flex-col gap-8">
           <div className="flex items-center gap-6 border-b border-[var(--border)] pb-4">
             <button
@@ -289,10 +289,10 @@ export default function AdminDashboard() {
 
         {activeSection === 'submissions' && (
           <>
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-6">
               <button
                 onClick={() => setActiveTab('pending')}
-                className={`px-5 py-2.5 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all border ${
+                className={`px-4 md:px-5 py-2 md:py-2.5 rounded-xl font-black uppercase tracking-widest text-[9px] md:text-[10px] transition-all border ${
                   activeTab === 'pending'
                     ? 'bg-[var(--primary)] text-white border-[var(--primary)] neon-glow'
                     : 'bg-transparent text-[var(--text-muted)] hover:text-[var(--text)] border-[var(--border)] hover:bg-[var(--secondary)]'
@@ -302,7 +302,7 @@ export default function AdminDashboard() {
               </button>
               <button
                 onClick={() => setActiveTab('resolved')}
-                className={`px-5 py-2.5 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all border ${
+                className={`px-4 md:px-5 py-2 md:py-2.5 rounded-xl font-black uppercase tracking-widest text-[9px] md:text-[10px] transition-all border ${
                   activeTab === 'resolved'
                     ? 'bg-[var(--primary)] text-white border-[var(--primary)] neon-glow'
                     : 'bg-transparent text-[var(--text-muted)] hover:text-[var(--text)] border-[var(--border)] hover:bg-[var(--secondary)]'
@@ -328,25 +328,25 @@ export default function AdminDashboard() {
                   <button
                     key={submission.id}
                     onClick={() => setSelectedSubmission(submission)}
-                    className="w-full text-left bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-5 hover:border-[var(--primary)] transition-all group relative overflow-hidden"
+                    className="w-full text-left bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-4 md:p-5 hover:border-[var(--primary)] transition-all group relative overflow-hidden"
                   >
                     <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-transparent via-[var(--primary)] to-transparent opacity-0 group-hover:opacity-40 transition-opacity"></div>
-                    <div className="flex items-start justify-between gap-6">
+                    <div className="flex items-start justify-between gap-4 md:gap-6">
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-3 mb-3">
-                          <span className="text-[10px] font-mono font-bold text-[var(--primary)] uppercase tracking-widest">
+                        <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-2 md:mb-3">
+                          <span className="text-[9px] md:text-[10px] font-mono font-bold text-[var(--primary)] uppercase tracking-widest">
                             #{submission.id.slice(0, 8)}
                           </span>
-                          <span className="px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-widest bg-[var(--secondary)] text-[var(--text-muted)] border border-[var(--border)]">
+                          <span className="px-1.5 md:px-2 py-0.5 rounded-md text-[8px] md:text-[9px] font-black uppercase tracking-widest bg-[var(--secondary)] text-[var(--text-muted)] border border-[var(--border)]">
                             {submission.type}
                           </span>
                           {getStatusBadge(submission.status)}
                         </div>
-                        <p className="text-sm text-[var(--text)] font-medium line-clamp-2">
+                        <p className="text-xs md:text-sm text-[var(--text)] font-medium line-clamp-2">
                           {submission.content}
                         </p>
                       </div>
-                      <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-tighter whitespace-nowrap pt-1">
+                      <span className="text-[8px] md:text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-tighter whitespace-nowrap pt-1">
                         {formatDate(submission.createdAt)}
                       </span>
                     </div>
@@ -359,35 +359,35 @@ export default function AdminDashboard() {
 
         {activeSection === 'notifications' && (
           <div className="max-w-2xl mx-auto">
-            <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-8 mb-8 relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-5">
-                <svg className="w-24 h-24 text-[var(--primary)]" fill="currentColor" viewBox="0 0 24 24">
+            <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 md:p-8 mb-8 relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 md:p-8 opacity-5">
+                <svg className="w-16 h-16 md:w-24 md:h-24 text-[var(--primary)]" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                 </svg>
               </div>
-              <h2 className="text-xl font-black text-[var(--text)] uppercase tracking-tighter mb-6">
+              <h2 className="text-lg md:text-xl font-black text-[var(--text)] uppercase tracking-tighter mb-6">
                 Add Notification Email
               </h2>
-              <div className="flex gap-3 relative z-10">
+              <div className="flex flex-col sm:flex-row gap-3 relative z-10">
                 <input
                   type="email"
                   value={newEmail}
                   onChange={e => setNewEmail(e.target.value)}
                   placeholder="admin@club.secure"
-                  className="flex-1 px-4 py-3 rounded-xl border border-[var(--border)] bg-black/40 text-[var(--text)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)] transition-all"
+                  className="flex-1 px-4 py-3 rounded-xl border border-[var(--border)] bg-black/40 text-[var(--text)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)] transition-all text-sm"
                 />
                 <button
                   onClick={handleAddEmail}
                   disabled={addingEmail || !newEmail.includes('@')}
-                  className="px-6 py-3 bg-[var(--primary)] text-white rounded-xl font-black uppercase tracking-widest text-xs transition-all disabled:opacity-30 disabled:cursor-not-allowed neon-glow"
+                  className="px-6 py-3 bg-[var(--primary)] text-white rounded-xl font-black uppercase tracking-widest text-[10px] md:text-xs transition-all disabled:opacity-30 disabled:cursor-not-allowed neon-glow h-12 md:h-auto"
                 >
-                  {addingEmail ? '...' : 'Add'}
+                  {addingEmail ? '...' : 'Add Email'}
                 </button>
               </div>
             </div>
 
-            <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl overflow-hidden shadow-xl">
-              <table className="w-full">
+            <div className="bg-[var(--surface)] border border-[var(--border)] rounded-2xl overflow-x-auto shadow-xl">
+              <table className="w-full min-w-[600px]">
                 <thead>
                   <tr className="bg-[var(--secondary)]/50 border-b border-[var(--border)]">
                     <th className="text-left px-6 py-4 text-[10px] font-black uppercase tracking-widest text-[var(--text-muted)]">
@@ -441,17 +441,17 @@ export default function AdminDashboard() {
       </main>
 
       {selectedSubmission && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center backdrop-blur-sm z-50 p-4">
-          <div className="bg-[var(--surface)] rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl border border-[var(--border)] relative">
+        <div className="fixed inset-0 bg-black/90 flex items-center justify-center backdrop-blur-sm z-50 p-2 md:p-4">
+          <div className="bg-[var(--surface)] rounded-2xl w-full max-w-2xl max-h-[95vh] sm:max-h-[90vh] overflow-hidden flex flex-col shadow-2xl border border-[var(--border)] relative">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--primary)] to-transparent opacity-50"></div>
             
-            <div className="flex items-center justify-between p-6 border-b border-[var(--border)] bg-[var(--background)]">
-              <div>
-                <span className="text-[10px] font-mono font-bold text-[var(--primary)] uppercase tracking-widest block mb-1">
-                  Submission ID: {selectedSubmission.id}
+            <div className="flex items-center justify-between p-4 md:p-6 border-b border-[var(--border)] bg-[var(--background)]">
+              <div className="min-w-0 flex-1">
+                <span className="text-[8px] md:text-[10px] font-mono font-bold text-[var(--primary)] uppercase tracking-widest block mb-1 truncate">
+                  ID: {selectedSubmission.id}
                 </span>
-                <div className="flex items-center gap-3">
-                  <span className="px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-widest bg-[var(--secondary)] text-[var(--text-muted)] border border-[var(--border)]">
+                <div className="flex flex-wrap items-center gap-2 md:gap-3">
+                  <span className="px-1.5 md:px-2 py-0.5 rounded-md text-[8px] md:text-[9px] font-black uppercase tracking-widest bg-[var(--secondary)] text-[var(--text-muted)] border border-[var(--border)]">
                     {selectedSubmission.type}
                   </span>
                   {getStatusBadge(selectedSubmission.status)}
@@ -467,15 +467,15 @@ export default function AdminDashboard() {
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-8 space-y-8">
+            <div className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6 md:space-y-8">
               <div>
-                <h3 className="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.3em] mb-4">
+                <h3 className="text-[9px] md:text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.2em] md:tracking-[0.3em] mb-3 md:mb-4">
                   Original Content
                 </h3>
-                <div className="p-6 bg-black/40 rounded-2xl border border-[var(--border)] text-[var(--text)] whitespace-pre-wrap text-sm leading-relaxed font-medium shadow-inner">
+                <div className="p-4 md:p-6 bg-black/40 rounded-2xl border border-[var(--border)] text-[var(--text)] whitespace-pre-wrap text-xs md:text-sm leading-relaxed font-medium shadow-inner">
                   {selectedSubmission.content}
                 </div>
-                <div className="mt-3 flex items-center gap-2 text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-widest">
+                <div className="mt-3 flex items-center gap-2 text-[8px] md:text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-widest">
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -485,19 +485,19 @@ export default function AdminDashboard() {
 
               {selectedSubmission.replies.length > 0 && (
                 <div>
-                  <h3 className="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.3em] mb-4">
+                  <h3 className="text-[9px] md:text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.2em] md:tracking-[0.3em] mb-3 md:mb-4">
                     Communication Log ({selectedSubmission.replies.length})
                   </h3>
-                  <div className="space-y-4">
+                  <div className="space-y-3 md:space-y-4">
                     {selectedSubmission.replies.map(reply => (
                       <div
                         key={reply.id}
-                        className="p-5 bg-[var(--secondary)]/40 rounded-2xl border border-[var(--border)] relative"
+                        className="p-4 md:p-5 bg-[var(--secondary)]/40 rounded-2xl border border-[var(--border)] relative"
                       >
-                        <div className="absolute top-4 right-4 text-[9px] font-bold text-[var(--text-muted)] uppercase tracking-tighter opacity-50">
+                        <div className="absolute top-4 right-4 text-[8px] md:text-[9px] font-bold text-[var(--text-muted)] uppercase tracking-tighter opacity-50">
                           {formatDate(reply.createdAt)}
                         </div>
-                        <p className="text-[var(--text)] whitespace-pre-wrap text-sm font-medium leading-relaxed">
+                        <p className="text-[var(--text)] whitespace-pre-wrap text-xs md:text-sm font-medium leading-relaxed">
                           {reply.content}
                         </p>
                       </div>
@@ -506,8 +506,8 @@ export default function AdminDashboard() {
                 </div>
               )}
 
-              <div className="pt-4 border-t border-[var(--border)]">
-                <h3 className="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.3em] mb-4">
+              <div className="pt-4 md:pt-6 border-t border-[var(--border)]">
+                <h3 className="text-[9px] md:text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.2em] md:tracking-[0.3em] mb-3 md:mb-4">
                   Response Action
                 </h3>
                 <textarea
@@ -515,12 +515,12 @@ export default function AdminDashboard() {
                   onChange={e => setReplyContent(e.target.value)}
                   placeholder="Type your secure response to the member..."
                   rows={4}
-                  className="w-full px-5 py-4 rounded-xl border border-[var(--border)] bg-black/40 text-[var(--text)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)] resize-none text-sm transition-all"
+                  className="w-full px-4 md:px-5 py-3 md:py-4 rounded-xl border border-[var(--border)] bg-black/40 text-[var(--text)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)] resize-none text-xs md:text-sm transition-all"
                 />
                 <button
                   onClick={handleReplySubmit}
                   disabled={submittingReply || !replyContent.trim()}
-                  className="mt-4 px-6 py-3.5 bg-[var(--primary)] text-white rounded-xl font-black uppercase tracking-widest text-xs transition-all disabled:opacity-30 disabled:cursor-not-allowed neon-glow flex items-center gap-2"
+                  className="mt-4 px-5 md:px-6 py-3 md:py-3.5 bg-[var(--primary)] text-white rounded-xl font-black uppercase tracking-widest text-[10px] md:text-xs transition-all disabled:opacity-30 disabled:cursor-not-allowed neon-glow flex items-center justify-center gap-2 w-full sm:w-auto"
                 >
                   {submittingReply ? (
                     <>
@@ -535,16 +535,16 @@ export default function AdminDashboard() {
               </div>
 
               <div>
-                <h3 className="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.3em] mb-4">
+                <h3 className="text-[9px] md:text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.2em] md:tracking-[0.3em] mb-3 md:mb-4">
                   Workflow Status
                 </h3>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-col sm:flex-row gap-3">
                   {selectedSubmission.status !== 'reviewing' && (
                     <button
                       onClick={() =>
                         handleStatusChange(selectedSubmission.id, 'reviewing')
                       }
-                      className="px-5 py-2.5 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-blue-500/20 transition-all flex items-center gap-2"
+                      className="px-5 py-3 md:py-2.5 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-blue-500/20 transition-all flex items-center justify-center gap-2 flex-1"
                     >
                       <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></div>
                       Mark Reviewing
@@ -555,7 +555,7 @@ export default function AdminDashboard() {
                       onClick={() =>
                         handleStatusChange(selectedSubmission.id, 'resolved')
                       }
-                      className="px-5 py-2.5 bg-green-500/10 text-[var(--success)] border border-green-500/20 rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-green-500/20 transition-all flex items-center gap-2"
+                      className="px-5 py-3 md:py-2.5 bg-green-500/10 text-[var(--success)] border border-green-500/20 rounded-xl font-black uppercase tracking-widest text-[10px] hover:bg-green-500/20 transition-all flex items-center justify-center gap-2 flex-1"
                     >
                       <div className="w-1.5 h-1.5 bg-[var(--success)] rounded-full"></div>
                       Mark Resolved

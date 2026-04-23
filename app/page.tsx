@@ -63,47 +63,47 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[var(--background)] px-4 flex flex-col items-center justify-center relative overflow-hidden">
-      <header className="fixed top-0 left-0 p-8 md:p-12 z-40">
-        <div className="h-12 md:h-16 w-auto">
+      <header className="fixed top-0 left-0 p-6 md:p-12 z-40">
+        <div className="h-10 md:h-16 w-auto">
           <img src="/logo.png" alt="AIRIS Logo" className="h-full w-auto object-contain" />
         </div>
       </header>
       <main className="w-full max-w-4xl">
         {success ? (
-          <div className="max-w-xl mx-auto bg-[var(--surface)] rounded-xl p-10 shadow-2xl border border-[var(--border)] relative overflow-hidden text-center">
+          <div className="max-w-xl mx-auto bg-[var(--surface)] rounded-xl p-6 md:p-10 shadow-2xl border border-[var(--border)] relative overflow-hidden text-center">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--primary)] to-transparent opacity-50"></div>
-            <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-green-500/20">
-              <svg className="w-8 h-8 text-[var(--success)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 md:w-16 md:h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 border border-green-500/20">
+              <svg className="w-6 h-6 md:w-8 md:h-8 text-[var(--success)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h2 className="text-4xl font-black text-[var(--text)] mb-3 tracking-tight uppercase">
+            <h2 className="text-3xl md:text-4xl font-black text-[var(--text)] mb-3 tracking-tight uppercase">
               Received
             </h2>
-            <p className="text-[var(--text-muted)] mb-10 text-lg">
+            <p className="text-sm md:text-lg text-[var(--text-muted)] mb-8 md:mb-10">
               Your {mode === 'grievance' ? 'grievance' : 'feedback'} has been submitted securely and anonymously.
             </p>
-            <div className="bg-[var(--secondary)] rounded-xl p-8 mb-10 inline-block border border-[var(--border)] shadow-inner">
-              <p className="text-sm uppercase tracking-[0.3em] font-black text-[var(--text-muted)] mb-3">
+            <div className="bg-[var(--secondary)] rounded-xl p-6 md:p-8 mb-8 md:mb-10 inline-block border border-[var(--border)] shadow-inner w-full md:w-auto">
+              <p className="text-[10px] md:text-sm uppercase tracking-[0.2em] md:tracking-[0.3em] font-black text-[var(--text-muted)] mb-2 md:mb-3">
                 Reference Tracking ID
               </p>
-              <p className="text-4xl font-mono font-black text-[var(--primary)] tracking-widest">
+              <p className="text-2xl md:text-4xl font-mono font-black text-[var(--primary)] tracking-widest break-all">
                 {trackingId}
               </p>
             </div>
-            <p className="text-base text-[var(--text-muted)] mb-10 max-w-sm mx-auto leading-relaxed">
+            <p className="text-sm md:text-base text-[var(--text-muted)] mb-8 md:mb-10 max-w-sm mx-auto leading-relaxed">
               Please save this tracking ID. You will need it to check the status of your submission later.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
               <button
                 onClick={resetForm}
-                className="h-14 px-8 bg-[var(--primary)] text-black rounded-lg font-black hover:bg-[var(--primary-hover)] transition-all neon-glow flex-1 sm:flex-none uppercase text-sm tracking-[0.2em]"
+                className="h-12 md:h-14 px-6 md:px-8 bg-[var(--primary)] text-black rounded-lg font-black hover:bg-[var(--primary-hover)] transition-all neon-glow flex-1 sm:flex-none uppercase text-xs md:text-sm tracking-[0.2em]"
               >
                 Submit Another
               </button>
               <button
                 onClick={() => router.push(`/check?id=${trackingId}`)}
-                className="h-14 px-8 border border-[var(--border)] text-[var(--text)] rounded-lg font-black hover:bg-[var(--secondary)] transition-all flex-1 sm:flex-none uppercase text-sm tracking-[0.2em]"
+                className="h-12 md:h-14 px-6 md:px-8 border border-[var(--border)] text-[var(--text)] rounded-lg font-black hover:bg-[var(--secondary)] transition-all flex-1 sm:flex-none uppercase text-xs md:text-sm tracking-[0.2em]"
               >
                 Check Status
               </button>
@@ -111,59 +111,59 @@ export default function Home() {
           </div>
         ) : mode === "none" ? (
           <div className="w-full text-center">
-            <div className="mb-14">
-              <h1 className="text-5xl font-black text-[var(--text)] mb-4 tracking-tighter leading-none whitespace-nowrap">
-                GRIEVANCE & <span className="text-[var(--primary)]">FEEDBACK</span>
+            <div className="mb-10 md:mb-14">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-[var(--text)] mb-4 tracking-tighter leading-none uppercase">
+                Grievance & <span className="text-[var(--primary)]">Feedback</span>
               </h1>
-              <p className="text-sm text-[var(--text-muted)] font-black uppercase tracking-[0.4em] opacity-80">
+              <p className="text-[10px] md:text-sm text-[var(--text-muted)] font-black uppercase tracking-[0.3em] md:tracking-[0.4em] opacity-80">
                 Secure Anonymous Portal / AIRIS
               </p>
             </div>
 
-            <div className="flex flex-col gap-4 max-w-2xl mx-auto">
+            <div className="flex flex-col gap-3 md:gap-4 max-w-2xl mx-auto">
               <button
                 onClick={() => setMode("grievance")}
-                className="w-full h-24 flex items-center justify-between px-10 bg-transparent border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white hover:border-[var(--primary)] group"
+                className="w-full h-20 md:h-24 flex items-center justify-between px-6 md:px-10 bg-transparent border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white hover:border-[var(--primary)] group transition-all"
               >
                 <div className="text-left">
-                  <h2 className="text-2xl font-black uppercase tracking-tight">
+                  <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight">
                     Submit Grievance
                   </h2>
-                  <p className="text-xs text-[var(--text-muted)] group-hover:text-white/70 font-bold uppercase tracking-widest mt-1">
+                  <p className="text-[10px] md:text-xs text-[var(--text-muted)] group-hover:text-white/70 font-bold uppercase tracking-widest mt-1">
                     Serious concerns & incidents
                   </p>
                 </div>
-                <span className="text-2xl font-light opacity-30 group-hover:opacity-100">&rarr;</span>
+                <span className="text-xl md:text-2xl font-light opacity-30 group-hover:opacity-100">&rarr;</span>
               </button>
-
+ 
               <button
                 onClick={() => setMode("feedback")}
-                className="w-full h-24 flex items-center justify-between px-10 bg-transparent border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white hover:border-[var(--primary)] group"
+                className="w-full h-20 md:h-24 flex items-center justify-between px-6 md:px-10 bg-transparent border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white hover:border-[var(--primary)] group transition-all"
               >
                 <div className="text-left">
-                  <h2 className="text-2xl font-black uppercase tracking-tight">
+                  <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight">
                     Share Feedback
                   </h2>
-                  <p className="text-xs text-[var(--text-muted)] group-hover:text-white/70 font-bold uppercase tracking-widest mt-1">
+                  <p className="text-[10px] md:text-xs text-[var(--text-muted)] group-hover:text-white/70 font-bold uppercase tracking-widest mt-1">
                     Suggestions & thoughts
                   </p>
                 </div>
-                <span className="text-2xl font-light opacity-30 group-hover:opacity-100">&rarr;</span>
+                <span className="text-xl md:text-2xl font-light opacity-30 group-hover:opacity-100">&rarr;</span>
               </button>
-
+ 
               <button
                 onClick={() => router.push("/check")}
-                className="w-full h-24 flex items-center justify-between px-10 bg-transparent border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white hover:border-[var(--primary)] group"
+                className="w-full h-20 md:h-24 flex items-center justify-between px-6 md:px-10 bg-transparent border border-[var(--border)] hover:bg-[var(--primary)] hover:text-white hover:border-[var(--primary)] group transition-all"
               >
                 <div className="text-left">
-                  <h2 className="text-2xl font-black uppercase tracking-tight">
+                  <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight">
                     Check Status
                   </h2>
-                  <p className="text-xs text-[var(--text-muted)] group-hover:text-white/70 font-bold uppercase tracking-widest mt-1">
+                  <p className="text-[10px] md:text-xs text-[var(--text-muted)] group-hover:text-white/70 font-bold uppercase tracking-widest mt-1">
                     Track existing submissions
                   </p>
                 </div>
-                <span className="text-2xl font-light opacity-30 group-hover:opacity-100">&rarr;</span>
+                <span className="text-xl md:text-2xl font-light opacity-30 group-hover:opacity-100">&rarr;</span>
               </button>
             </div>
           </div>
@@ -176,11 +176,11 @@ export default function Home() {
               <span>&lt;</span> BACK
             </button>
 
-            <div className="mb-8">
-              <h2 className="text-4xl font-black text-[var(--text)] uppercase tracking-tight mb-1">
+            <div className="mb-6 md:mb-8">
+              <h2 className="text-3xl md:text-4xl font-black text-[var(--text)] uppercase tracking-tight mb-1">
                 SUBMIT
               </h2>
-              <p className="text-sm text-[var(--text-muted)] font-mono tracking-wide">
+              <p className="text-xs md:text-sm text-[var(--text-muted)] font-mono tracking-wide">
                 Total anonymity guaranteed.
               </p>
             </div>
@@ -220,15 +220,15 @@ export default function Home() {
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   placeholder="TYPE HERE ..."
-                  className="w-full h-64 px-8 pt-8 pb-8 bg-[#0a0a0a] text-[var(--text)] placeholder-[#222] focus:outline-none border border-[var(--border)] focus:border-[var(--primary)] transition-all text-lg font-mono leading-relaxed resize-none shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)] focus:shadow-[0_0_20px_rgba(255,0,127,0.05)] rounded-sm"
+                  className="w-full h-48 md:h-64 px-6 md:px-8 py-6 md:py-8 bg-[#0a0a0a] text-[var(--text)] placeholder-[#222] focus:outline-none border border-[var(--border)] focus:border-[var(--primary)] transition-all text-base md:text-lg font-mono leading-relaxed resize-none shadow-[inset_0_2px_10px_rgba(0,0,0,0.5)] focus:shadow-[0_0_20px_rgba(255,0,127,0.05)] rounded-sm"
                   disabled={loading}
                 />
               </div>
-
+ 
               <button
                 type="submit"
                 disabled={loading || !content.trim()}
-                className="w-full mt-6 h-14 bg-[#700a39] text-[rgba(255,255,255,0.7)] hover:bg-[#850c44] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed font-black uppercase tracking-[0.4em] text-sm flex items-center justify-center"
+                className="w-full mt-4 md:mt-6 h-12 md:h-14 bg-[#700a39] text-[rgba(255,255,255,0.7)] hover:bg-[#850c44] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed font-black uppercase tracking-[0.4em] text-xs md:text-sm flex items-center justify-center"
               >
                 {loading ? "PROCESSING ..." : "SECURE SUBMIT"}
               </button>

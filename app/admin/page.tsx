@@ -41,15 +41,15 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--background)] flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-[var(--background)] flex items-center justify-center px-6 py-8 md:py-12">
       <div className="w-full max-w-sm">
         <div className="text-center mb-10">
-          <div className="w-16 h-16 bg-[var(--primary)]/10 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-[var(--primary)]/20 shadow-lg neon-glow">
-            <svg className="w-8 h-8 text-[var(--primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="w-12 h-12 md:w-16 md:h-16 bg-[var(--primary)]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6 border border-[var(--primary)]/20 shadow-lg neon-glow">
+            <svg className="w-6 h-6 md:w-8 md:h-8 text-[var(--primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
-          <h1 className="text-3xl font-black text-[var(--text)] tracking-tighter uppercase">
+          <h1 className="text-2xl md:text-3xl font-black text-[var(--text)] tracking-tighter uppercase">
             Admin <span className="text-[var(--primary)]">Portal</span>
           </h1>
           <p className="text-xs text-[var(--text-muted)] font-bold tracking-[0.3em] uppercase mt-2">
@@ -57,7 +57,7 @@ export default function AdminLogin() {
           </p>
         </div>
 
-        <div className="bg-[var(--surface)] rounded-2xl p-8 shadow-2xl border border-[var(--border)] relative overflow-hidden">
+        <div className="bg-[var(--surface)] rounded-2xl p-6 md:p-8 shadow-2xl border border-[var(--border)] relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--primary)] to-transparent opacity-30"></div>
           
           {error && (
@@ -123,11 +123,11 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={loading || !username.trim() || !password.trim()}
-              className="w-full px-6 py-3.5 bg-[var(--primary)] text-white rounded-xl font-black hover:bg-[var(--primary-hover)] transition-all disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center gap-3 neon-glow uppercase tracking-widest text-xs"
+              className="w-full px-6 py-3 md:py-3.5 bg-[var(--primary)] text-white rounded-xl font-black hover:bg-[var(--primary-hover)] transition-all disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center gap-3 neon-glow uppercase tracking-widest text-[10px] md:text-xs"
             >
               {loading ? (
                 <>
-                  <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 md:w-5 md:h-5 animate-spin" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                   </svg>
